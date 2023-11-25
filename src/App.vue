@@ -1,9 +1,15 @@
-<script setup></script>
+<script>
+import MainNav from '@/components/MainNav.vue'
+export default {
+  name: 'App',
+  components: {
+    MainNav
+  }
+}
+</script>
 
 <template>
-  <div class="wrapper">
-    <h1 class="text-red-400">Hello Vue</h1>
-  </div>
+  <main-nav />
 </template>
 
 <style scoped></style>
