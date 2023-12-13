@@ -1,4 +1,3 @@
-import { describe, it, expect } from 'vitest'
 import { evenOrOdd, multiply } from '../../src/playground.js'
 describe('basic math', () => {
   it('Adds two numbers', () => {
