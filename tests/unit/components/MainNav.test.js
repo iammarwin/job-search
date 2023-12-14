@@ -6,6 +6,7 @@ import { expect } from 'vitest'
 describe('MainNav', () => {
   it('display company name and links', () => {
     render(MainNav)
-    screen.debug()
+    const companyName = screen.getByText('CareerConnect')
+    expect(companyName).toBeInTheDocument()
   })
 })
