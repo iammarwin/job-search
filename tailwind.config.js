@@ -11,6 +11,10 @@ module.exports = {
         'brand-gray-1': '#dadce0',
         'brand-blue-1': '#1967d2',
         'brand-green-1': '#137333'
+      },
+      boxShadow: {
+        blue: '0 1px 3px 1px rgba(66,64,67,.15), 0 1px 2px 0 rgba(60,64,67,.3)',
+        bhover: '0 1px 3px 1px rgba(66,64,67,.15), 0 1px 2px 0 rgba(60,64,67,.3)'
       }
     }
   },
