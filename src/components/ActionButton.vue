@@ -12,10 +12,16 @@ export default {
   },
   props: {
     btnText: {
-      type: String
+      type: String,
+      required: true
     },
     btnType: {
-      type: String
+      type: String,
+      required: false,
+      default: 'primary',
+      validator(value) {
+        return ['primary', 'secondary'].includes(value)
+      }
     }
   },
   computed: {
@@ -32,9 +38,9 @@ button {
 }
 
 .primary {
-  @apply hover:bg-brand-blue-3 border-0 bg-brand-blue-1 text-white shadow-blue hover:shadow-bhover;
+  @apply border-0 bg-brand-blue-1 text-white shadow-blue hover:bg-brand-blue-3 hover:shadow-bhover;
 }
 .secondary {
-  @apply hover:bg-brand-blue-3 rounded-full bg-brand-blue-1 py-4 text-white;
+  @apply rounded-full bg-brand-blue-1 py-4 text-white hover:bg-brand-blue-3;
 }
 </style>

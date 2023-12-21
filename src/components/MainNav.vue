@@ -4,7 +4,7 @@
       <div
         class="mx-auto flex h-full flex-nowrap gap-x-8 border-b border-solid border-brand-gray-1 px-8"
       >
-        <a href="/" class="flex h-full items-center text-xl">{{ company }}</a>
+        <a href="/" class="flex h-full items-center text-xl font-semibold">{{ company }}</a>
         <nav class="h-full">
           <ul class="flex h-full gap-x-9 font-medium text-gray-900">
             <li
@@ -18,9 +18,10 @@
         </nav>
         <div class="ml-auto flex h-full items-center">
           <profile-image v-if="isLoggedIn" />
-          <action-button v-else @click="loginUser" btn-text="Sign In" btn-type="primary" />
+          <action-button v-else @click="loginUser" btn-text="Sign In" />
         </div>
       </div>
+      <the-subnav v-if="isLoggedIn" />
     </div>
   </header>
 </template>
@@ -28,11 +29,13 @@
 <script>
 import ActionButton from '@/components/ActionButton.vue'
 import ProfileImage from '@/components/ProfileImage.vue'
+import TheSubnav from '@/components/TheSubnav.vue'
 export default {
   name: 'MainNav',
   components: {
     ActionButton,
-    ProfileImage
+    ProfileImage,
+    TheSubnav
   },
   data() {
     return {
