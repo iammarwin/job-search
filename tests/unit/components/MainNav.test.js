@@ -1,16 +1,24 @@
 import { render, screen } from '@testing-library/vue'
 import userEvent from '@testing-library/user-event'
 import MainNav from '@/components/MainNav.vue'
-import { describe, expect } from 'vitest'
 
 describe('MainNav', () => {
+  const renderMainNav = () => {
+    render(MainNav, {
+      global: {
+        stubs: {
+          FontAwesomeIcon: true
+        }
+      }
+    })
+  }
   it('display company name', () => {
-    render(MainNav)
+    renderMainNav()
     const companyName = screen.getByText('CareerConnect')
     expect(companyName).toBeInTheDocument()
   })
   it('displays menu items for navigation', () => {
-    render(MainNav)
+    renderMainNav()
     const navMenuItems = screen.getAllByRole('listitem')
     const navMenuTexts = navMenuItems.map((item) => item.textContent)
 
@@ -19,7 +27,7 @@ describe('MainNav', () => {
 
   describe('when the user logs in', () => {
     it('displays user profile picture', async () => {
-      render(MainNav)
+      renderMainNav()
       let profielImage = screen.queryByRole('img', {
         name: /user profile image/i
       })
