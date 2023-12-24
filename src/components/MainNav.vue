@@ -1,8 +1,8 @@
 <template>
-  <header class="with-full text-sm">
+  <header :class="['with-full', 'text-sm', headerHeightClass]">
     <div class="fixed left-0 top-0 h-16 w-full">
       <div
-        class="mx-auto flex h-full flex-nowrap gap-x-8 border-b border-solid border-brand-gray-1 px-8"
+        class="mx-auto flex h-full flex-nowrap gap-x-8 border-b border-solid border-brand-gray-1 bg-white px-8"
       >
         <a href="/" class="flex h-full items-center text-xl font-semibold">{{ company }}</a>
         <nav class="h-full">
@@ -39,7 +39,7 @@ export default {
   },
   data() {
     return {
-      company: 'CareerConnect',
+      company: 'Gomyco',
       navLinks: [
         { href: '#', label: 'Teams' },
         { href: '#', label: 'Location' },
@@ -53,6 +53,14 @@ export default {
   methods: {
     loginUser() {
       this.isLoggedIn = true
+    }
+  },
+  computed: {
+    headerHeightClass() {
+      return {
+        'h-16': !this.isLoggedIn,
+        'h-32': this.isLoggedIn
+      }
     }
   }
 }

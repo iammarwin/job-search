@@ -14,7 +14,7 @@ describe('MainNav', () => {
   }
   it('display company name', () => {
     renderMainNav()
-    const companyName = screen.getByText('CareerConnect')
+    const companyName = screen.getByText('Gomyco')
     expect(companyName).toBeInTheDocument()
   })
   it('displays menu items for navigation', () => {
