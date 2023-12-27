@@ -8,7 +8,7 @@
         </div>
         <div class="col-span-5 col-start-8 self-center justify-self-center">
           <img
-            src="../assets/images/Vue.js_Logo_2.svg.png"
+            src="../../assets/images/Vue.js_Logo_2.svg.png"
             alt=""
             class="h-80 w-80 object-contain"
           />
@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import TheHeadline from './TheHeadline.vue'
-import JobSerachForm from './JobSerachForm.vue'
+import TheHeadline from '@/components/JobSearch/TheHeadline.vue'
+import JobSerachForm from '@/components/JobSearch/JobSerachForm.vue'
 export default {
   name: 'TheHero',
   components: {

@@ -1,7 +1,7 @@
 import { nextTick } from 'vue'
 import { screen, render } from '@testing-library/vue'
 
-import TheHeadline from '@/components/TheHeadline.vue'
+import TheHeadline from '@/components/JobSearch/TheHeadline.vue'
 import { afterEach, beforeEach, expect, vi } from 'vitest'
 describe('TheHeadline', () => {
   beforeEach(() => {
