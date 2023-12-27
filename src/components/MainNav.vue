@@ -1,5 +1,5 @@
 <template>
-  <header :class="['with-full', 'text-sm', headerHeightClass]">
+  <header :class="['w-full', 'text-sm', headerHeightClass]">
     <div class="fixed left-0 top-0 h-16 w-full">
       <div
         class="mx-auto flex h-full flex-nowrap gap-x-8 border-b border-solid border-brand-gray-1 bg-white px-8"
