@@ -9,13 +9,7 @@
           class="flex w-full items-center gap-x-2 rounded-full border border-brand-gray-3 px-4 py-3"
         >
           <font-awesome-icon class="text-brand-gray-3" v-bind:icon="['fas', 'search']" />
-          <input
-            class="flex-1 text-lg font-normal outline-none"
-            type="text"
-            id="role"
-            placeholder="Software Engineer"
-            v-model="role"
-          />
+          <text-input placeholder="Software Engineer" id="role" v-model="role" />
         </div>
       </fieldset>
       <fieldset class="flex w-full flex-col gap-y-2 lg:flex-1">
@@ -24,13 +18,7 @@
           class="flex w-full items-center gap-x-2 rounded-full border border-brand-gray-3 px-4 py-3"
         >
           <font-awesome-icon class="text-brand-gray-3" :icon="['fas', 'location-dot']" />
-          <input
-            class="flex-1 text-lg font-normal outline-none"
-            type="text"
-            id="location"
-            placeholder="Los Angeles"
-            v-model="location"
-          />
+          <text-input placeholder="Los Angeles" id="location" v-model="location" />
         </div>
       </fieldset>
       <div class="lg:self-end">
@@ -42,10 +30,12 @@
 
 <script>
 import ActionButton from '@/components/Shared/ActionButton.vue'
+import TextInput from '../Shared/TextInput.vue'
 export default {
   name: 'JobSearchForm',
   components: {
-    ActionButton
+    ActionButton,
+    TextInput
   },
   data() {
     return {
