@@ -4,7 +4,9 @@
       <div
         class="mx-auto flex h-full flex-nowrap gap-x-8 border-b border-solid border-brand-gray-1 bg-white px-8"
       >
-        <a href="/" class="flex h-full items-center text-xl font-semibold">{{ company }}</a>
+        <router-link :to="{ name: 'Home' }" class="flex h-full items-center text-xl font-semibold"
+          >ArkConnect</router-link
+        >
         <nav class="h-full">
           <ul class="flex h-full gap-x-9 font-medium text-gray-900">
             <li
@@ -12,7 +14,7 @@
               :key="link.label"
               class="flex h-full items-center justify-center"
             >
-              <a :href="link.href" class="py-2.5">{{ link.label }}</a>
+              <router-link :to="link.href" class="py-2.5">{{ link.label }}</router-link>
             </li>
           </ul>
         </nav>
@@ -39,13 +41,12 @@ export default {
   },
   data() {
     return {
-      company: 'Gomyco',
       navLinks: [
-        { href: '#', label: 'Teams' },
-        { href: '#', label: 'Location' },
-        { href: '#', label: 'Benefits' },
-        { href: '#', label: 'Jobs' },
-        { href: '#', label: 'Students' }
+        { href: '/', label: 'Teams' },
+        { href: '/', label: 'Location' },
+        { href: '/', label: 'Benefits' },
+        { href: '/jobs/results', label: 'Jobs' },
+        { href: '/', label: 'Students' }
       ],
       isLoggedIn: false
     }
