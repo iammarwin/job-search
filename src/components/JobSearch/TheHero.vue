@@ -20,7 +20,7 @@
 
 <script>
 import TheHeadline from '@/components/JobSearch/TheHeadline.vue'
-import JobSerachForm from '@/components/JobSearch/JobSerachForm.vue'
+import JobSerachForm from '@/components/JobSearch/JobSearchForm.vue'
 export default {
   name: 'TheHero',
   components: {

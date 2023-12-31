@@ -2,6 +2,7 @@
   <div class="mt-16">
     <form
       class="flex w-full flex-col gap-4 lg:w-11/12 lg:flex-row lg:items-center lg:justify-center"
+      @submit.prevent="searchForJobs"
     >
       <fieldset class="flex w-full flex-col gap-y-2 lg:flex-1">
         <label for="role" class="ml-4 text-base">Role</label>
@@ -41,6 +42,11 @@ export default {
     return {
       role: '',
       location: ''
+    }
+  },
+  methods: {
+    searchForJobs() {
+      this.$router.push({ name: 'JobResults', query: { role: this.role, location: this.location } })
     }
   }
 }
