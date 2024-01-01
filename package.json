@@ -1,5 +1,5 @@
 {
-  "name": "google-job-search",
+  "'name'": "google-job-search",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -8,12 +8,14 @@
     "preview": "vite preview",
     "test:unit": "vitest --environment jsdom --coverage",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "backend": "json-server --watch db.json"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/vue-fontawesome": "^3.0.5",
+    "axios": "^1.6.3",
     "eslint-plugin-vitest-globals": "^1.4.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"
