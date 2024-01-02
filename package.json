@@ -1,5 +1,5 @@
 {
-  "'name'": "google-job-search",
+  "'name'": "job-search",
   "version": "0.0.0",
   "private": true,
   "scripts": {
