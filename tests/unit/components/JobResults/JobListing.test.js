@@ -4,7 +4,7 @@ import { RouterLinkStub } from '@vue/test-utils'
 import JobListing from '@/components/JobResults/JobListing.vue'
 
 describe('JobListing', () => {
-  const createJobProps = (props) => ({
+  const createJobProps = (props = {}) => ({
     title: 'Vue Programmer',
     organization: 'Apple',
     ...props
