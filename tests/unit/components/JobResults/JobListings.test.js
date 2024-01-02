@@ -74,7 +74,7 @@ describe('JobListings', () => {
       expect(previousLink).not.toBeInTheDocument()
     })
 
-    it('shows linkcto next page', async () => {
+    it('shows link to next page', async () => {
       axios.get.mockResolvedValue({ data: Array(15).fill({}) })
       const queryPrams = { page: 1 }
       const $route = createRoute(queryPrams)
@@ -82,7 +82,7 @@ describe('JobListings', () => {
       await screen.findAllByRole('listitem')
 
       const nextLink = screen.queryByRole('link', { name: /next/i })
-      expect(nextLink).not.toBeInTheDocument()
+      expect(nextLink).toBeInTheDocument()
     })
   })
 })
