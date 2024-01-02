@@ -3,7 +3,7 @@ import { RouterLinkStub } from '@vue/test-utils'
 import axios from 'axios'
 
 import JobListings from '@/components/JobResults/JobListings.vue'
-import { expect, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 vi.mock('axios')
 
@@ -32,6 +32,7 @@ describe('JobListings', () => {
     axios.get.mockResolvedValue({ data: [] })
     const $route = createRoute()
     renderJobListings($route)
+
     expect(axios.get).toHaveBeenCalledWith('http://localhost:3000/jobs/')
   })
 
@@ -43,5 +44,22 @@ describe('JobListings', () => {
 
     const jobListings = await screen.findAllByRole('listitem')
     expect(jobListings).toHaveLength(10)
+  })
+
+  describe('when params exclude page', () => {
+    it('displays page number 1', () => {
+      const queryParams = { page: undefined }
+      const $route = createRoute(queryParams)
+      renderJobListings($route)
+      expect(screen.getByText('Page 1')).toBeInTheDocument()
+    })
+  })
+  describe('when params include page', () => {
+    it('displays page number', () => {
+      const queryParams = { page: '3' }
+      const $route = createRoute(queryParams)
+      renderJobListings($route)
+      expect(screen.getByText('Page 3')).toBeInTheDocument()
+    })
   })
 })
