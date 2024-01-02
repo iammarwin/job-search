@@ -5,11 +5,6 @@
 <script>
 export default {
   name: 'ActionButton',
-  data() {
-    return {
-      primary: true
-    }
-  },
   props: {
     btnText: {
       type: String,
