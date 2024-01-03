@@ -3,7 +3,6 @@ import { RouterLinkStub } from '@vue/test-utils'
 import axios from 'axios'
 
 import JobListings from '@/components/JobResults/JobListings.vue'
-import { describe, expect, it } from 'vitest'
 
 vi.mock('axios')
 
@@ -33,7 +32,7 @@ describe('JobListings', () => {
     const $route = createRoute()
     renderJobListings($route)
 
-    expect(axios.get).toHaveBeenCalledWith('http://localhost:3000/jobs/')
+    expect(axios.get).toHaveBeenCalledWith('http://myfakeapi:3000/jobs')
   })
 
   it('displays maximum of 10 jobs', async () => {
