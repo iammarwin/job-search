@@ -40,6 +40,6 @@ button {
 }
 
 .tertiary {
-  @apply px-4 text-base font-semibold text-brand-blue-1 hover:bg-brand-gray-2;
+  @apply px-2 py-2 text-sm font-semibold text-brand-blue-1 hover:bg-brand-gray-2;
 }
 </style>
