@@ -8,7 +8,9 @@
         <font-awesome-icon :icon="careIcone" class="transit h-6 w-6 duration-500 ease-in-out" />
       </div>
     </div>
-    <div v-if="isOpen" class="mt-5 w-full">Child</div>
+    <div v-if="isOpen" class="mt-5 w-full">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
