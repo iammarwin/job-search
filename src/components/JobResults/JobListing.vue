@@ -17,7 +17,7 @@ export default {
       class="mx-auto block rounded-md border border-solid border-brand-gray-2 bg-white shadow-gray"
     >
       <div class="border-b border-solid border-brand-gray-1 px-8 pb-2 pt-5">
-        <h2 class="mb-2 text-xl font-medium">
+        <h2 class="mb-2 text-2xl font-medium">
           {{ job.title }}
         </h2>
         <div class="flex flex-row align-middle">

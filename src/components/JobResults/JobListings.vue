@@ -1,6 +1,6 @@
 <template>
   <main class="flex-auto bg-brand-gray-2 p-8">
-    <div class="m-auto max-w-6xl">
+    <div class="m-auto max-w-[1200px]">
       <ul class="flex flex-col gap-7">
         <job-listing v-for="job in displayedJobs" :key="job.id" :job="job" />
       </ul>
