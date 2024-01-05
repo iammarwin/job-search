@@ -15,7 +15,7 @@ export default {
       required: false,
       default: 'primary',
       validator(value) {
-        return ['primary', 'secondary'].includes(value)
+        return ['primary', 'secondary', 'tertiary'].includes(value)
       }
     }
   },
@@ -37,5 +37,9 @@ button {
 }
 .secondary {
   @apply rounded-full bg-brand-blue-1 py-4 text-white hover:bg-brand-blue-3;
+}
+
+.tertiary {
+  @apply px-4 text-base font-semibold text-brand-blue-1 hover:bg-brand-gray-2;
 }
 </style>
