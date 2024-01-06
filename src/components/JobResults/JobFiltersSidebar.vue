@@ -4,47 +4,26 @@
       <div class="flex flex-row items-center justify-between">
         <h3 class="my-4 text-base font-semibold">What do you want do do?</h3>
         <div class="flex items-center text-sm">
-          <action-button btnText="Clear Filters" btnType="tertiary" />
+          <action-button btn-text="Clear Filters" btn-type="tertiary" />
         </div>
       </div>
-      <collapsible-accordion header="Job types">Placeholder for now</collapsible-accordion>
-      <collapsible-accordion header="Organizations">
-        <div class="mt-5">
-          <fieldset>
-            <ul class="flex flex-row flex-wrap">
-              <li class="h-8 w-1/2">
-                <input type="checkbox" id="VueTube" class="mr-3" />
-                <label for="VueTube">VueTube</label>
-              </li>
-              <li class="h-8 w-1/2">
-                <input type="checkbox" id="Between Vue and Me" class="mr-3" />
-                <label for="Between Vue and Me">Between Vue</label>
-              </li>
-              <li class="h-8 w-1/2">
-                <input type="checkbox" id="Et Vue Brute" class="mr-3" />
-                <label for="Et Vue Brute">Et Vue Brute</label>
-              </li>
-              <li class="h-8 w-1/2">
-                <input type="checkbox" id="Vue and a Half Men" class="mr-3" />
-                <label for="Vue and a Half Men">Vue and a Half Men</label>
-              </li>
-            </ul>
-          </fieldset>
-        </div></collapsible-accordion
-      >
       <collapsible-accordion header="Degree" />
+      <collapsible-accordion header="Job types">Placeholder for now</collapsible-accordion>
+      <job-filters-sidebar-organizations />
     </section>
   </div>
 </template>
 
 <script>
+import JobFiltersSidebarOrganizations from '@/components/JobResults/JobFiltersSidebarOrganizations.vue'
 import ActionButton from '@/components/Shared/ActionButton.vue'
 import CollapsibleAccordion from '@/components/Shared/CollapsibleAccordion.vue'
 export default {
   name: 'JobFiltersSidebar',
   components: {
     ActionButton,
-    CollapsibleAccordion
+    CollapsibleAccordion,
+    JobFiltersSidebarOrganizations
   }
 }
 </script>

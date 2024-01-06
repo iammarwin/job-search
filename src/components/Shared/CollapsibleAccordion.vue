@@ -2,8 +2,8 @@
   <div class="border-b border-solid border-brand-gray-1 py-5">
     <div
       class="flex cursor-pointer flex-wrap items-center justify-between"
-      @click="open"
       role="button"
+      @click="open"
     >
       <h3 class="text-base font-semibold">{{ header }}</h3>
       <div
