@@ -21,15 +21,15 @@
 <script>
 export default {
   name: 'CollapsibleAccordion',
-  data() {
-    return {
-      isOpen: false
-    }
-  },
   props: {
     header: {
       type: String,
       required: true
+    }
+  },
+  data() {
+    return {
+      isOpen: false
     }
   },
   computed: {

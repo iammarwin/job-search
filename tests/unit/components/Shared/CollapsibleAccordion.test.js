@@ -4,7 +4,7 @@ import CollapsibleAccordion from '@/components/Shared/CollapsibleAccordion.vue'
 import { describe, expect } from 'vitest'
 
 describe('CollapsibleAccordion', () => {
-  const rebderCollapsibleAccordion = () => {
+  const rebderCollapsibleAccordion = (config = {}) => {
     render(CollapsibleAccordion, {
       global: {
         stubs: {
@@ -16,23 +16,19 @@ describe('CollapsibleAccordion', () => {
       },
       slots: {
         default: '<h3>My nested child</h3>'
-      }
+      },
+      ...config
     })
   }
   it('renders child content', async () => {
-    render(CollapsibleAccordion, {
-      global: {
-        stubs: {
-          FontAwesomeIcon: true
-        }
-      },
-      props: {
-        header: 'My Category'
-      },
-      slots: {
-        default: '<h3>My nested child</h3>'
-      }
-    })
+    const props = {
+      header: 'MY Category'
+    }
+    const slots = {
+      default: '<h3>My nested child</h3>'
+    }
+    const config = { props, slots }
+    rebderCollapsibleAccordion(config)
 
     expect(screen.queryByText('My nested child')).not.toBeInTheDocument()
 
@@ -44,16 +40,12 @@ describe('CollapsibleAccordion', () => {
   })
   describe('when parent deos not provide custom child content', () => {
     it('renders default content', async () => {
-      render(CollapsibleAccordion, {
-        global: {
-          stubs: {
-            FontAwesomeIcon: true
-          }
-        },
-        props: {
-          header: 'My Category'
-        }
-      })
+      const props = {
+        header: 'MY Category'
+      }
+      const slots = {}
+      const config = { props, slots }
+      rebderCollapsibleAccordion(config)
 
       const button = screen.getByRole('button', {
         name: /my category/i
