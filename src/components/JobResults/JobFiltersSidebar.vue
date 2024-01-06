@@ -7,7 +7,7 @@
           <action-button btnText="Clear Filters" btnType="tertiary" />
         </div>
       </div>
-      <collapsible-accordion header="Job types"></collapsible-accordion>
+      <collapsible-accordion header="Job types">Placeholder for now</collapsible-accordion>
       <collapsible-accordion header="Organizations">
         <div class="mt-5">
           <fieldset>
@@ -32,6 +32,7 @@
           </fieldset>
         </div></collapsible-accordion
       >
+      <collapsible-accordion header="Degree" />
     </section>
   </div>
 </template>
