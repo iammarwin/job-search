@@ -15,6 +15,11 @@ const routes = [
     path: '/jobs/results/:id',
     name: 'JobListing',
     component: () => import('@/views/JobView.vue')
+  },
+  {
+    path: '/teams',
+    name: 'Teams',
+    component: () => import('@/views/TeamsView.vue')
   }
 ]
 

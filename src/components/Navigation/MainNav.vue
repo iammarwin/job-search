@@ -20,7 +20,7 @@
         </nav>
         <div class="ml-auto flex h-full items-center">
           <profile-image v-if="isLoggedIn" />
-          <action-button v-else @click="loginUser" btn-text="Sign In" />
+          <action-button v-else btn-text="Sign In" @click="loginUser" />
         </div>
       </div>
       <the-subnav v-if="isLoggedIn" />
@@ -44,16 +44,13 @@ export default {
   data() {
     return {
       navLinks: [
-        { href: '/', label: 'Teams' },
+        { href: '/teams', label: 'Teams' },
         { href: '/', label: 'Location' },
         { href: '/', label: 'Benefits' },
         { href: '/jobs/results', label: 'Jobs' },
         { href: '/', label: 'Students' }
       ]
     }
-  },
-  methods: {
-    ...mapActions(useUserStore, ['loginUser'])
   },
   computed: {
     ...mapState(useUserStore, ['isLoggedIn']),
@@ -63,6 +60,9 @@ export default {
         'h-32': this.isLoggedIn
       }
     }
+  },
+  methods: {
+    ...mapActions(useUserStore, ['loginUser'])
   }
 }
 </script>
