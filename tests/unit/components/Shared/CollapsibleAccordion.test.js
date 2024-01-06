@@ -4,7 +4,7 @@ import CollapsibleAccordion from '@/components/Shared/CollapsibleAccordion.vue'
 import { describe } from 'vitest'
 
 describe('CollapsibleAccordion', () => {
-  it('renders child content', () => {
+  it('renders child content', async () => {
     render(CollapsibleAccordion, {
       global: {
         stubs: {
@@ -13,7 +13,17 @@ describe('CollapsibleAccordion', () => {
       },
       props: {
         header: 'My Category'
+      },
+      slots: {
+        default: '<h3>My nested child</h3>'
       }
     })
+
+    expect(screen.queryByText('My nested child')).not.toBeInTheDocument()
+    const button = screen.getByRole('button', {
+      name: /my category/i
+    })
+    await userEvent.click(button)
+    expect(screen.getByText('My nested child')).toBeInTheDocument()
   })
 })

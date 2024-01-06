@@ -1,6 +1,10 @@
 <template>
   <div class="border-b border-solid border-brand-gray-1 py-5">
-    <div class="flex cursor-pointer flex-wrap items-center justify-between" @click="open">
+    <div
+      class="flex cursor-pointer flex-wrap items-center justify-between"
+      @click="open"
+      role="button"
+    >
       <h3 class="text-base font-semibold">{{ header }}</h3>
       <div
         class="transit flex items-center justify-center rounded-full p-2 duration-200 ease-in-out hover:bg-slate-200"
