@@ -19,10 +19,14 @@
       <template #default="slotProps">
         <router-link
           to="jobs/results"
-          class="borde mx-5 flex h-96 w-72 flex-col overflow-hidden rounded-lg border-brand-gray-2"
+          class="mx-5 flex w-72 flex-col overflow-hidden rounded-lg border bg-brand-gray-2 transition duration-200 ease-in-out hover:scale-105"
         >
-          <img :src="slotProps.spotlight.img" :alt="slotProps.spotlight.title" />
-          <div class="mt-3 h-48 px-6 py-4">
+          <img
+            :src="slotProps.spotlight.img"
+            :alt="slotProps.spotlight.title"
+            class="object-contain"
+          />
+          <div class="mt-3 px-6 py-4">
             <h3 class="text-lg font-medium">
               {{ slotProps.spotlight.title }}
             </h3>
@@ -30,7 +34,7 @@
           </div>
           <router-link
             to="/jobs/results"
-            class="px-6 pb-4 text-brand-blue-1 decoration-2 hover:underline hover:decoration-brand-blue-1 hover:underline-offset-2"
+            class="px-6 pb-6 text-brand-blue-1 decoration-2 transition duration-200 ease-in-out hover:font-semibold hover:underline hover:decoration-brand-blue-1 hover:underline-offset-2"
             >See jobs</router-link
           >
         </router-link>
