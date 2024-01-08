@@ -2,15 +2,27 @@
   "spotlights": [
     {
       "id": 1,
-      "img": "https://images.unsplash.com/photo-1556075798-4825dfaaf498",
+      "img": "https://www.gstatic.com/careerthumbnails/SOFTWARE_ENGINEERING/208_003.jpg",
       "title": "Cloud Engineering",
-      "description": "Build fun stuff in the cloud. It's a lot of fun, we promise!"
+      "description": "Help millions build what's next for their business — explore engineering jobs with Google Cloud."
     },
     {
       "id": 2,
-      "img": "https://images.unsplash.com/photo-1511376777868-611b54f68947",
-      "title": "Executive Leadership",
-      "description": "Be a leader for everyone. Leadership builds character."
+      "img": "https://www.gstatic.com/careerthumbnails/DEVELOPER_RELATIONS/208_003.jpg",
+      "title": "Bay Area Roles",
+      "description": "Find roles located throughout the Bay Area, California."
+    },
+    {
+      "id": 3,
+      "img": "https://www.gstatic.com/careerthumbnails/SOFTWARE_ENGINEERING/208_001.jpg",
+      "title": "Consumer Hardware",
+      "description": "Design and build the systems that are the heart of the world's largest and most powerful computing infrastructure and products."
+    },
+    {
+      "id": 4,
+      "img": "https://www.gstatic.com/careerthumbnails/TECHNICAL_WRITING/208_002.jpg",
+      "title": "Platforms & Ecosystems",
+      "description": "Work on our innovative software products that have an impact on people's lives across the world."
     }
   ],
   "jobs": [
