@@ -1,6 +1,6 @@
 <template>
-  <main>
-    <section class="flex h-screen flex-col pb-20 pt-10">
+  <main class="flex h-screen flex-col">
+    <section class="pb-20 pt-10">
       <div class="grid px-4 lg:grid-cols-12">
         <div class="col-span-6 col-start-2">
           <the-headline />
@@ -15,17 +15,40 @@
         </div>
       </div>
     </section>
+    <spot-light class="mt-12 flex flex-row justify-center pb-16">
+      <template #default="slotProps">
+        <router-link
+          to="jobs/results"
+          class="borde mx-5 flex h-96 w-72 flex-col overflow-hidden rounded-lg border-brand-gray-2"
+        >
+          <img :src="slotProps.spotlight.img" :alt="slotProps.spotlight.title" />
+          <div class="mt-3 h-48 px-6 py-4">
+            <h3 class="text-lg font-medium">
+              {{ slotProps.spotlight.title }}
+            </h3>
+            <p class="mt-3 text-sm">{{ slotProps.spotlight.description }}</p>
+          </div>
+          <router-link
+            to="/jobs/results"
+            class="px-6 pb-4 text-brand-blue-1 decoration-2 hover:underline hover:decoration-brand-blue-1 hover:underline-offset-2"
+            >See jobs</router-link
+          >
+        </router-link>
+      </template>
+    </spot-light>
   </main>
 </template>
 
 <script>
 import TheHeadline from '@/components/JobSearch/TheHeadline.vue'
 import JobSerachForm from '@/components/JobSearch/JobSearchForm.vue'
+import SpotLight from '@/components/JobSearch/SpotLight.vue'
 export default {
   name: 'TheHero',
   components: {
     TheHeadline,
-    JobSerachForm
+    JobSerachForm,
+    SpotLight
   }
 }
 </script>
