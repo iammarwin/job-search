@@ -17,27 +17,25 @@
     </section>
     <spot-light class="mt-12 flex flex-row justify-center pb-16">
       <template #default="slotProps">
-        <router-link
-          to="jobs/results"
-          class="mx-5 flex w-72 flex-col overflow-hidden rounded-lg border bg-brand-gray-2 transition duration-200 ease-in-out hover:scale-105"
-        >
-          <img
-            :src="slotProps.spotlight.img"
-            :alt="slotProps.spotlight.title"
-            class="object-contain"
-          />
-          <div class="mt-3 px-6 py-4">
-            <h3 class="text-lg font-medium">
-              {{ slotProps.spotlight.title }}
-            </h3>
-            <p class="mt-3 text-sm">{{ slotProps.spotlight.description }}</p>
-          </div>
+        <div>
           <router-link
-            to="/jobs/results"
-            class="px-6 pb-6 text-brand-blue-1 decoration-2 transition duration-200 ease-in-out hover:font-semibold hover:underline hover:decoration-brand-blue-1 hover:underline-offset-2"
-            >See jobs</router-link
+            to="jobs/results"
+            class="mx-5 flex h-[410px] w-80 flex-col overflow-hidden rounded-lg border bg-brand-gray-2 transition duration-200 ease-in-out hover:scale-105"
           >
-        </router-link>
+            <img :src="slotProps.img" :alt="slotProps.title" class="object-contain" />
+            <div class="mt-3 px-6 pb-4 pt-2">
+              <h3 class="text-lg font-medium">
+                {{ slotProps.title }}
+              </h3>
+              <p class="mt-3 text-sm">{{ slotProps.description }}</p>
+            </div>
+            <router-link
+              to="/jobs/results"
+              class="px-6 pb-6 text-brand-blue-1 decoration-2 transition duration-200 ease-in-out hover:font-semibold hover:underline hover:decoration-brand-blue-1 hover:underline-offset-2"
+              >See jobs</router-link
+            >
+          </router-link>
+        </div>
       </template>
     </spot-light>
   </main>
