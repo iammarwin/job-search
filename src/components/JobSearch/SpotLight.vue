@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for="spotlight in spotLights" :key="spotlight.id">
+    <li v-for="spotlight in spotLights" :key="spotlight.id" class="h-full">
       <slot
         :img="spotlight.img"
         :title="spotlight.title"
