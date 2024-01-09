@@ -16,18 +16,18 @@
       </div>
     </section>
     <spot-light class="mt-12 flex flex-row justify-center pb-16">
-      <template #default="{ img, title, description }">
+      <template #default="slotProps">
         <div class="h-full">
           <router-link
             to="jobs/results"
             class="mx-5 flex h-full w-72 flex-col overflow-hidden rounded-lg border bg-brand-gray-2 transition duration-200 ease-in-out hover:scale-105"
           >
-            <img :src="img" :alt="title" class="object-contain" />
+            <img :src="slotProps.img" :alt="slotProps.title" class="object-contain" />
             <div class="mt-3 px-6 pb-6 pt-2">
               <h3 class="text-lg font-medium">
-                {{ title }}
+                {{ slotProps.title }}
               </h3>
-              <p class="mt-3 text-sm">{{ description }}</p>
+              <p class="mt-3 text-sm">{{ slotProps.description }}</p>
             </div>
           </router-link>
         </div>
