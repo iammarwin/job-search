@@ -2,7 +2,6 @@ import { createPinia, setActivePinia } from 'pinia'
 import axios from 'axios'
 
 import { useJobsStore } from '@/stores/jobs'
-import { describe, expect } from 'vitest'
 
 vi.mock('axios')
 
