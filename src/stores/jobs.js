@@ -21,7 +21,10 @@ export const useJobsStore = defineStore('jobs', {
     },
     [FILTERED_JOBS_BY_ORGANIZATIONS](state) {
       const userStore = useUserStore()
-      return state.jobs.filter((job) => userStore.selectedOrganizations.includes(job.organization))
+      const filteredJobs = state.jobs.filter((job) =>
+        userStore.selectedOrganizations.includes(job.organization)
+      )
+      return filteredJobs.length > 0 ? filteredJobs : state.jobs
     }
   },
   actions: {
