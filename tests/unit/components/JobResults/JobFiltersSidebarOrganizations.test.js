@@ -4,13 +4,13 @@ import { createTestingPinia } from '@pinia/testing'
 
 import JobFiltersSidebarOrganizations from '@/components/JobResults/JobFiltersSidebarOrganizations.vue'
 import { useJobsStore } from '@/stores/jobs.js'
+import { useUserStore } from '@/stores/user.js'
 
 describe('JobFiltersSidebarOrganizations', () => {
-  it('renders unique list of organization from jobs', async () => {
+  const renderJobFiltersSidebarOrganizations = () => {
     const pinia = createTestingPinia()
     const jobsStore = useJobsStore()
-    jobsStore.UNIQUE_ORGANIZATIONS = new Set(['Google', 'Amazon'])
-
+    const userStore = useUserStore()
     render(JobFiltersSidebarOrganizations, {
       global: {
         plugins: [pinia]
@@ -19,13 +19,33 @@ describe('JobFiltersSidebarOrganizations', () => {
         FontAwesomeIcon: true
       }
     })
+    return { jobsStore, userStore }
+  }
+
+  it('renders unique list of organization from jobs', async () => {
+    const { jobsStore } = renderJobFiltersSidebarOrganizations()
+    jobsStore.UNIQUE_ORGANIZATIONS = new Set(['Google', 'Amazon'])
 
     const button = screen.getByRole('button', { name: /organizations/i })
     await userEvent.click(button)
 
-    const organizationsListItems = screen.getAllByRole('listitem')
-    const organizations = organizationsListItems.map((node) => node.textContent)
-
+    const organizationListItems = screen.getAllByRole('listitem')
+    const organizations = organizationListItems.map((node) => node.textContent)
     expect(organizations).toEqual(['Google', 'Amazon'])
+  })
+
+  it('communicates thet user has selected checkbox for organizations', async () => {
+    const { jobsStore, userStore } = renderJobFiltersSidebarOrganizations()
+    jobsStore.UNIQUE_ORGANIZATIONS = new Set(['Google', 'Amazon'])
+
+    const button = screen.getByRole('button', { name: /organizations/i })
+    await userEvent.click(button)
+
+    const googleCheckbox = screen.getByRole('checkbox', {
+      name: /google/i
+    })
+    await userEvent.click(googleCheckbox)
+
+    expect(userStore.ADD_SELECTED_ORGANIZATIONS).toHaveBeenCalledWith(['Google'])
   })
 })
