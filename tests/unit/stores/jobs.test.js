@@ -3,6 +3,7 @@ import axios from 'axios'
 
 import { useJobsStore } from '@/stores/jobs.js'
 import { useUserStore } from '@/stores/user.js'
+import { describe, expect } from 'vitest'
 
 vi.mock('axios')
 
@@ -89,6 +90,44 @@ describe('getters', () => {
           { organization: 'Google' },
           { organization: 'Amazon' },
           { organization: 'Microsoft' }
+        ])
+      })
+    })
+  })
+
+  describe('FILTERED_JOBS_BY_JOB_TYPES', () => {
+    it('identifies jobs that are associated with the given job tybe', () => {
+      const jobsStore = useJobsStore()
+      jobsStore.jobs = [
+        { jobType: 'Full-time' },
+        { jobType: 'Part-time' },
+        { jobType: 'Temporary' }
+      ]
+      const userStore = useUserStore()
+      userStore.selectedJobTypes = ['Full-time', 'Part-time']
+
+      const result = jobsStore.FILTERED_JOBS_BY_JOB_TYPES
+
+      expect(result).toEqual([{ jobType: 'Full-time' }, { jobType: 'Part-time' }])
+    })
+
+    describe('when the user has not selected any job types', () => {
+      it('returns all jobs', () => {
+        const jobsStore = useJobsStore()
+        jobsStore.jobs = [
+          { jobType: 'Full-time' },
+          { jobType: 'Part-time' },
+          { jobType: 'Temporary' }
+        ]
+        const userStore = useUserStore()
+        userStore.selectedJobTypes = []
+
+        const result = jobsStore.FILTERED_JOBS_BY_JOB_TYPES
+
+        expect(result).toEqual([
+          { jobType: 'Full-time' },
+          { jobType: 'Part-time' },
+          { jobType: 'Temporary' }
         ])
       })
     })
