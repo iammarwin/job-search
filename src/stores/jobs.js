@@ -17,14 +17,13 @@ export const useJobsStore = defineStore('jobs', {
   getters: {
     [UNIQUE_ORGANIZATIONS](state) {
       const uniqueOrganization = new Set()
-      state.jobs.forEach((job) => {
-        uniqueOrganization.add(job.organization)
-      })
+      state.jobs.forEach((job) => uniqueOrganization.add(job.organization))
       return uniqueOrganization
     },
     [UNIQUE_JOB_TYPES](state) {
       const uniqueJobTypes = new Set()
-      state.jobs.forEach((job) => uniqueJobTypes.add(job.Jobtype))
+      state.jobs.forEach((job) => uniqueJobTypes.add(job.jobType))
+      return uniqueJobTypes
     },
     [FILTERED_JOBS_BY_ORGANIZATIONS](state) {
       const userStore = useUserStore()
@@ -38,7 +37,7 @@ export const useJobsStore = defineStore('jobs', {
       if (userStore.selectedJobTypes.length === 0) {
         return state.jobs
       }
-      return state.jobs.filter((job) => userStore.selectedJobTypes.includes(job.Jobtype))
+      return state.jobs.filter((job) => userStore.selectedJobTypes.includes(job.jobType))
     }
   },
   actions: {
