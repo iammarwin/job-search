@@ -5,7 +5,7 @@
         <font-awesome-icon :icon="['fas', 'search']" />
         <p class="text-lg">
           <span class="font-semibold text-brand-green-1">
-            {{ FILTERED_JOBS_BY_ORGANIZATIONS.length }}
+            {{ FILTERED_JOBS.length }}
           </span>
           jobs matched
         </p>
@@ -16,12 +16,12 @@
 
 <script>
 import { mapState } from 'pinia'
-import { useJobsStore, FILTERED_JOBS_BY_ORGANIZATIONS } from '@/stores/jobs.js'
+import { useJobsStore, FILTERED_JOBS } from '@/stores/jobs.js'
 
 export default {
   name: 'TheSubnav',
   computed: {
-    ...mapState(useJobsStore, [FILTERED_JOBS_BY_ORGANIZATIONS]),
+    ...mapState(useJobsStore, [FILTERED_JOBS]),
     onJobResultsPage() {
       return this.$route.name === 'JobResults'
     }

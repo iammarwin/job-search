@@ -8,8 +8,8 @@
         </div>
       </div>
       <collapsible-accordion header="Degree" />
-      <job-filters-sidebar-organizations />
       <job-filters-sidebar-job-types />
+      <job-filters-sidebar-organizations />
     </section>
   </div>
 </template>
