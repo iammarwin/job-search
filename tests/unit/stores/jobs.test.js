@@ -52,83 +52,66 @@ describe('getters', () => {
     })
   })
 
-  describe('FILTERED_JOBS_BY_ORGANIZATIONS', () => {
-    it('identifies jobs that are associated with the given organizations', () => {
-      const jobsStore = useJobsStore()
-      jobsStore.jobs = [
-        { organization: 'Google' },
-        { organization: 'Amazon' },
-        { organization: 'Microsoft' }
-      ]
-      const userStore = useUserStore()
-      userStore.selectedOrganizations = ['Google', 'Microsoft']
+  describe('UNIQUE_JOB_TYPES', () => {
+    it('finds unique job types from list of jobs', () => {
+      const store = useJobsStore()
+      store.jobs = [{ jobType: 'Full-time' }, { jobType: 'Part-time' }, { jobType: 'Full-time' }]
 
-      const result = jobsStore.FILTERED_JOBS_BY_ORGANIZATIONS
-
-      expect(result).toEqual([
-        {
-          organization: 'Google'
-        },
-        { organization: 'Microsoft' }
-      ])
+      const result = store.UNIQUE_JOB_TYPES
+      expect(result).toEqual(new Set(['Full-time', 'Part-time']))
     })
+  })
 
+  describe('INCLUDE_JOB_BY_ORGANIZATION', () => {
     describe('when the user has not selected any organizations', () => {
-      it('returns all jobs', () => {
-        const jobsStore = useJobsStore()
-        jobsStore.jobs = [
-          { organization: 'Google' },
-          { organization: 'Amazon' },
-          { organization: 'Microsoft' }
-        ]
+      it('includes job', () => {
         const userStore = useUserStore()
         userStore.selectedOrganizations = []
+        const jobsStore = useJobsStore()
+        const job = { organization: 'Google' }
 
-        const result = jobsStore.FILTERED_JOBS_BY_ORGANIZATIONS
+        const result = jobsStore.INCLUDE_JOB_BY_ORGANIZATION(job)
 
-        expect(result).toEqual([
-          { organization: 'Google' },
-          { organization: 'Amazon' },
-          { organization: 'Microsoft' }
-        ])
+        expect(result).toBe(true)
+      })
+    })
+    describe('when the user has selected organizations', () => {
+      it('identifies if job is associated with given organizations', () => {
+        const userStore = useUserStore()
+        userStore.selectedOrganizations = ['Google', 'Microsoft']
+        const jobsStore = useJobsStore()
+        const job = { organization: 'Google' }
+
+        const result = jobsStore.INCLUDE_JOB_BY_ORGANIZATION(job)
+
+        expect(result).toBe(true)
       })
     })
   })
 
-  describe('FILTERED_JOBS_BY_JOB_TYPES', () => {
-    it('identifies jobs that are associated with the given job tybe', () => {
-      const jobsStore = useJobsStore()
-      jobsStore.jobs = [
-        { jobType: 'Full-time' },
-        { jobType: 'Part-time' },
-        { jobType: 'Temporary' }
-      ]
-      const userStore = useUserStore()
-      userStore.selectedJobTypes = ['Full-time', 'Part-time']
-
-      const result = jobsStore.FILTERED_JOBS_BY_JOB_TYPES
-
-      expect(result).toEqual([{ jobType: 'Full-time' }, { jobType: 'Part-time' }])
-    })
-
+  describe('INCLUDE_JOB_BY_JOB_TYPE', () => {
     describe('when the user has not selected any job types', () => {
-      it('returns all jobs', () => {
-        const jobsStore = useJobsStore()
-        jobsStore.jobs = [
-          { jobType: 'Full-time' },
-          { jobType: 'Part-time' },
-          { jobType: 'Temporary' }
-        ]
+      it('includes job', () => {
         const userStore = useUserStore()
         userStore.selectedJobTypes = []
+        const jobsStore = useJobsStore()
+        const job = { jobType: 'Full-time' }
 
-        const result = jobsStore.FILTERED_JOBS_BY_JOB_TYPES
+        const result = jobsStore.INCLUDE_JOB_BY_JOB_TYPE(job)
 
-        expect(result).toEqual([
-          { jobType: 'Full-time' },
-          { jobType: 'Part-time' },
-          { jobType: 'Temporary' }
-        ])
+        expect(result).toBe(true)
+      })
+    })
+    describe('when the user has selected any job types', () => {
+      it('identifies if job is associated with given job types', () => {
+        const userStore = useUserStore()
+        userStore.selectedJobTypes = ['Full-time', 'Part-time']
+        const jobsStore = useJobsStore()
+        const job = { jobType: 'Part-time' }
+
+        const result = jobsStore.INCLUDE_JOB_BY_JOB_TYPE(job)
+
+        expect(result).toBe(true)
       })
     })
   })
