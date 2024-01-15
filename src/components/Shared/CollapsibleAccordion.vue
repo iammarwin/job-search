@@ -9,7 +9,7 @@
       <div
         class="transit flex items-center justify-center rounded-full p-2 duration-200 ease-in-out hover:bg-slate-200"
       >
-        <font-awesome-icon :icon="careIcone" class="transit h-6 w-6 duration-500 ease-in-out" />
+        <font-awesome-icon :icon="careIcon" class="transit h-6 w-6 duration-500 ease-in-out" />
       </div>
     </div>
     <div v-if="isOpen" class="mt-5 w-full">
@@ -18,29 +18,21 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'CollapsibleAccordion',
-  props: {
-    header: {
-      type: String,
-      required: true
-    }
-  },
-  data() {
-    return {
-      isOpen: false
-    }
-  },
-  computed: {
-    careIcone() {
-      return this.isOpen ? ['fas', 'angle-up'] : ['fas', 'angle-down']
-    }
-  },
-  methods: {
-    open() {
-      this.isOpen = !this.isOpen
-    }
+<script setup>
+import { ref, computed } from 'vue'
+
+defineProps({
+  header: {
+    type: String,
+    required: true
   }
+})
+
+const isOpen = ref(false)
+
+const open = () => {
+  isOpen.value = !isOpen.value
 }
+
+const careIcon = computed(() => (isOpen.value ? ['fas', 'angle-up'] : ['fas', 'angle-down']))
 </script>
