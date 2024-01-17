@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/vue'
 import userEvent from '@testing-library/user-event'
 import { createTestingPinia } from '@pinia/testing'
+import { useRouter } from 'vue-router'
+vi.mock('vue-router')
 
 import JobFiltersSidebarOrganizations from '@/components/JobResults/JobFiltersSidebarOrganizations.vue'
 import { useJobsStore } from '@/stores/jobs.js'
@@ -12,19 +14,16 @@ describe('JobFiltersSidebarOrganizations', () => {
     const pinia = createTestingPinia()
     const jobsStore = useJobsStore()
     const userStore = useUserStore()
-    const $router = { push: vi.fn() }
+
     render(JobFiltersSidebarOrganizations, {
       global: {
-        mocks: {
-          $router
-        },
-        plugins: [pinia]
-      },
-      stubs: {
-        FontAwesomeIcon: true
+        plugins: [pinia],
+        stubs: {
+          FontAwesomeIcon: true
+        }
       }
     })
-    return { jobsStore, userStore, $router }
+    return { jobsStore, userStore }
   }
 
   it('renders unique list of organization from jobs', async () => {
@@ -41,6 +40,7 @@ describe('JobFiltersSidebarOrganizations', () => {
 
   describe('when user clicks checkbox', () => {
     it('communicates thet user has selected checkbox for organizations', async () => {
+      useRouter.mockReturnValue({ push: vi.fn() })
       const { jobsStore, userStore } = renderJobFiltersSidebarOrganizations()
       jobsStore.UNIQUE_ORGANIZATIONS = new Set(['Google', 'Amazon'])
 
@@ -56,7 +56,9 @@ describe('JobFiltersSidebarOrganizations', () => {
     })
 
     it('navigates user to job page to see fresh batch of filtered jobs', async () => {
-      const { jobsStore, $router } = renderJobFiltersSidebarOrganizations()
+      const push = vi.fn()
+      useRouter.mockReturnValue({ push })
+      const { jobsStore } = renderJobFiltersSidebarOrganizations()
       jobsStore.UNIQUE_ORGANIZATIONS = new Set(['Google', 'Amazon'])
 
       const button = screen.getByRole('button', { name: /organizations/i })
@@ -67,7 +69,7 @@ describe('JobFiltersSidebarOrganizations', () => {
       })
       await userEvent.click(googleCheckbox)
 
-      expect($router.push).toHaveBeenCalledWith({ name: 'JobResults' })
+      expect(push).toHaveBeenCalledWith({ name: 'JobResults' })
     })
   })
 })
