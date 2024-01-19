@@ -1,15 +1,3 @@
-<script>
-export default {
-  name: 'JobListing',
-  props: {
-    job: {
-      type: Object,
-      required: true
-    }
-  }
-}
-</script>
-
 <template>
   <li>
     <router-link
@@ -55,3 +43,12 @@ export default {
     </router-link>
   </li>
 </template>
+
+<script setup>
+defineProps({
+  job: {
+    type: Object,
+    required: true
+  }
+})
+</script>
