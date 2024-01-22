@@ -29,8 +29,8 @@ import JobFiltersSidebarCheckboxGroup from '@/components/JobResults/JobFiltersSi
 import ActionButton from '@/components/Shared/ActionButton.vue'
 import CollapsibleAccordion from '@/components/Shared/CollapsibleAccordion.vue'
 
-import { useJobsStore } from '@/stores/jobs.js'
-import { useUserStore } from '@/stores/user.js'
+import { useJobsStore } from '@/stores/jobs'
+import { useUserStore } from '@/stores/user'
 
 const jobsStore = useJobsStore()
 const UNIQUE_JOB_TYPES = computed(() => jobsStore.UNIQUE_JOB_TYPES)
