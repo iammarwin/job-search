@@ -1,6 +1,6 @@
-import { computed } from 'vue'
+import { type Ref, computed } from 'vue'
 
-const usePreviousAndNextPages = (currentPage, lastPage) => {
+const usePreviousAndNextPages = (currentPage: Ref<number>, lastPage: Ref<number>) => {
   const previousPage = computed(() => {
     const previuousPage = currentPage.value - 1
     const firstPage = 1
