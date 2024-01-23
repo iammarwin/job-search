@@ -4,19 +4,22 @@
     :value="modelValue"
     autocomplete="off"
     class="flex-1 text-lg font-normal outline-none"
-    @input="$emit('update:modelValue', $event.target.value)"
+    @input="handleInput"
   />
 </template>
 
-<script>
-export default {
-  name: 'TextInput',
-  props: {
-    modelValue: {
-      type: String,
-      required: true
-    }
-  },
-  emits: ['update:modelValue']
+<script lang="ts" setup>
+defineProps({
+  modelValue: {
+    type: String,
+    required: true
+  }
+})
+
+const emit = defineEmits(['update:modelValue'])
+
+const handleInput = ($event: Event) => {
+  const target = $event.target as HTMLInputElement
+  emit('update:modelValue', target.value)
 }
 </script>
