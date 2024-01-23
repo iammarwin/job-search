@@ -34,7 +34,7 @@ import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import JobListing from '@/components/JobResults/JobListing.vue'
 import { useJobsStore } from '@/stores/jobs'
-import usePreviousAndNextPages from '@/composables/usePreviousAndNextPages.js'
+import usePreviousAndNextPages from '@/composables/usePreviousAndNextPages'
 
 const jobsStore = useJobsStore()
 onMounted(jobsStore.FETCH_JOBS)
