@@ -13,7 +13,6 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
-import type { S } from 'vitest/dist/reporters-OH1c16Kq.js'
 
 interface Spotlight {
   id: number
