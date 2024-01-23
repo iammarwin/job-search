@@ -2,7 +2,7 @@ import type { Mock } from 'vitest'
 import { createPinia, setActivePinia } from 'pinia'
 import axios from 'axios'
 
-import type { Job } from '@/api/types'
+import { createJob } from '../../utils/createJob'
 
 import { useJobsStore } from '@/stores/jobs.js'
 import { useUserStore } from '@/stores/user.js'
@@ -10,7 +10,6 @@ import { describe, expect } from 'vitest'
 
 vi.mock('axios')
 const axiosGetMock = axios.get as Mock
-
 describe('state', () => {
   beforeEach(() => {
     setActivePinia(createPinia())
@@ -38,23 +37,6 @@ describe('actions', () => {
 })
 
 describe('getters', () => {
-  const createJob = (job: Partial<Job>): Job => ({
-    id: 1,
-    title: 'Angular Developer',
-    organization: 'Vue and Me',
-    degree: "Master's",
-    jobType: 'Intern',
-    locations: ['Lisbon'],
-    minimumQualifications: [
-      'Mesh granular deliverables, engineer enterprise convergence, and synergize B2C initiatives'
-    ],
-    preferredQualifications: [
-      'Mesh wireless metrics, syndicate innovative markets, and disintermediate intuitive niches'
-    ],
-    description: ['Away someone forget effect wait land.'],
-    dateAdded: '2021-07-04',
-    ...job
-  })
   beforeEach(() => {
     setActivePinia(createPinia())
   })

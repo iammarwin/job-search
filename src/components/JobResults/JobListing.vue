@@ -36,18 +36,20 @@
           <router-link
             :to="{ name: 'JobListing', params: { id: job.id } }"
             class="rounded border border-brand-gray-1 bg-white px-4 py-2 font-medium text-brand-blue-1 hover:bg-brand-gray-2"
-            >Learn more</router-link
-          >
+            >Learn more
+          </router-link>
         </div>
       </div>
     </router-link>
   </li>
 </template>
 
-<script setup>
+<script lang="ts" setup>
+import { type PropType } from 'vue'
+import type { Job } from '@/api/types'
 defineProps({
   job: {
-    type: Object,
+    type: Object as PropType<Job>,
     required: true
   }
 })
