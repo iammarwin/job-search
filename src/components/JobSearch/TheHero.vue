@@ -36,16 +36,8 @@
   </main>
 </template>
 
-<script>
+<script lang="ts" setup>
 import TheHeadline from '@/components/JobSearch/TheHeadline.vue'
 import JobSerachForm from '@/components/JobSearch/JobSearchForm.vue'
 import SpotLight from '@/components/JobSearch/SpotLight.vue'
-export default {
-  name: 'TheHero',
-  components: {
-    TheHeadline,
-    JobSerachForm,
-    SpotLight
-  }
-}
 </script>
