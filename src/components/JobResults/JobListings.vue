@@ -1,5 +1,5 @@
 <template>
-  <main class="flex-auto bg-brand-gray-2 p-8">
+  <main class="ml-96 flex-auto bg-brand-gray-2 p-8">
     <div class="m-auto max-w-[1200px]">
       <ul class="flex flex-col gap-7">
         <job-listing v-for="job in displayedJobs" :key="job.id" :job="job" />
@@ -29,7 +29,7 @@
   </main>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import JobListing from '@/components/JobResults/JobListing.vue'
@@ -42,7 +42,7 @@ const FILTERED_JOBS = computed(() => jobsStore.FILTERED_JOBS)
 
 const route = useRoute()
 
-const currentPage = computed(() => Number.parseInt(route.query.page || '1'))
+const currentPage = computed(() => Number.parseInt((route.query.page as string) || '1'))
 const lastPage = computed(() => Math.ceil(FILTERED_JOBS.value.length / 10))
 
 const { previousPage, nextPage } = usePreviousAndNextPages(currentPage, lastPage)
