@@ -4,8 +4,8 @@ import axios from 'axios'
 
 import { createJob } from '../../utils/createJob'
 
-import { useJobsStore } from '@/stores/jobs.js'
-import { useUserStore } from '@/stores/user.js'
+import { useJobsStore } from '@/stores/jobs'
+import { useUserStore } from '@/stores/user'
 import { describe, expect } from 'vitest'
 
 vi.mock('axios')
