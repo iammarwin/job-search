@@ -1,11 +1,12 @@
 import type { Mock } from 'vitest'
 import { createPinia, setActivePinia } from 'pinia'
 
+import { useDegreesStore } from '@/stores/degrees'
+import { createDegree } from '../../utils/createDegree'
+
 import axios from 'axios'
 vi.mock('axios')
 const axiosGetMock = axios.get as Mock
-
-import { useDegreesStore } from '@/stores/degrees'
 
 describe('state', () => {
   beforeEach(() => {
@@ -41,6 +42,22 @@ describe('actions', () => {
           degree: "Bachelor's"
         }
       ])
+    })
+  })
+})
+
+describe('getters', () => {
+  beforeEach(() => {
+    setActivePinia(createPinia())
+  })
+  describe('UNIQUE_DEGREES', () => {
+    it('finds unique degrees from collection of degrees', () => {
+      const store = useDegreesStore()
+      store.degrees = [createDegree({ degree: "Master's" }), createDegree({ degree: "Bachelor's" })]
+
+      const result = store.UNIQUE_DEGREES
+
+      expect(result).toEqual(["Master's", "Bachelor's"])
     })
   })
 })
