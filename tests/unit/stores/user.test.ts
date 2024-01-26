@@ -57,4 +57,12 @@ describe('actions', () => {
       expect(userStore.selectedJobTypes).toEqual(['Full-time', 'Part-time'])
     })
   })
+
+  describe('ADD_SELECTED_DEGREES', () => {
+    it('updates degrees the user has chosen to filter jobs by', () => {
+      const userStore = useUserStore()
+      userStore.ADD_SELECTED_DEGREES(["Master's", "Bachelor's"])
+      expect(userStore.selectedDegrees).toEqual(["Master's", "Bachelor's"])
+    })
+  })
 })

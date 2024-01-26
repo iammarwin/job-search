@@ -50,6 +50,7 @@ export const useJobsStore = defineStore('jobs', {
       return state.jobs
         .filter((job) => this.INCLUDE_JOB_BY_ORGANIZATION(job))
         .filter((job) => this.INCLUDE_JOB_BY_JOB_TYPE(job))
+        .filter((job) => this.INCLUDE_JOB_BY_DEGREE(job))
     }
   },
   actions: {
