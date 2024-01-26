@@ -1,5 +1,6 @@
 import type { Mock } from 'vitest'
 import { render, screen } from '@testing-library/vue'
+import { useUserStore } from '@/stores/user'
 import userEvent from '@testing-library/user-event'
 import { createTestingPinia } from '@pinia/testing'
 import { useRouter } from 'vue-router'
@@ -20,18 +21,17 @@ describe('JobFiltersSidebarCheckboxGroup', () => {
     ...props
   })
   const renderJobFiltersSidebarCheckboxGroup = (props: JobFiltersSidebarCheckboxGroupProps) => {
-    const pinia = createTestingPinia()
+    const pinia = createTestingPinia({ stubActions: false })
+    const userStore = useUserStore()
     render(JobFiltersSidebarCheckboxGroup, {
       props: {
         ...props
       },
       global: {
-        plugins: [pinia],
-        stubs: {
-          FontAwesomeIcon: true
-        }
+        plugins: [pinia]
       }
     })
+    return { userStore }
   }
 
   it('renders unique list of values', () => {
@@ -75,6 +75,34 @@ describe('JobFiltersSidebarCheckboxGroup', () => {
         name: /full-time/i
       })
       await userEvent.click(fullTimeCheckbox)
+
+      expect(push).toHaveBeenCalledWith({ name: 'JobResults' })
+    })
+  })
+
+  describe('when user clears job filters', () => {
+    it('unchecks any checked checkboxes', async () => {
+      const push = vi.fn()
+      useRouterMock.mockReturnValue({ push })
+      const props = createProps({
+        uniqueValues: new Set(['Full-time'])
+      })
+      const { userStore } = renderJobFiltersSidebarCheckboxGroup(props)
+
+      const fullTimeCheckboxBeforeAction = screen.getByRole<HTMLInputElement>('checkbox', {
+        name: /full-time/i
+      })
+      await userEvent.click(fullTimeCheckboxBeforeAction)
+
+      expect(fullTimeCheckboxBeforeAction.checked).toBe(true)
+
+      userStore.CLEAR_USER_JOB_FILTER_SELECTIONS()
+
+      const fullTimeCheckboxAfterAction = await screen.findByRole<HTMLInputElement>('checkbox', {
+        name: /full-time/i
+      })
+
+      expect(fullTimeCheckboxAfterAction.checked).toBe(false)
 
       expect(push).toHaveBeenCalledWith({ name: 'JobResults' })
     })

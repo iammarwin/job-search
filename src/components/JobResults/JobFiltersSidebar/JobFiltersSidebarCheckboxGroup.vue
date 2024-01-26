@@ -48,6 +48,7 @@ userStore.$onAction(({ after, name }) => {
   after(() => {
     if (name === CLEAR_USER_JOB_FILTER_SELECTIONS) {
       selectedValues.value = []
+      router.push({ name: 'JobResults' })
     }
   })
 })
