@@ -33,6 +33,9 @@ export const useUserStore = defineStore('user', () => {
   const ADD_SELECTED_DEGREES = (degrees: string[]) => {
     selectedDegrees.value = degrees
   }
+  const UPDATE_SKILLS_SEARCH_TERM = (skills: string) => {
+    skillsSearchTerm.value = skills
+  }
   const CLEAR_USER_JOB_FILTER_SELECTIONS = () => {
     selectedOrganizations.value = []
     selectedJobTypes.value = []
@@ -48,6 +51,7 @@ export const useUserStore = defineStore('user', () => {
     ADD_SELECTED_ORGANIZATIONS,
     ADD_SELECTED_JOB_TYPES,
     ADD_SELECTED_DEGREES,
+    UPDATE_SKILLS_SEARCH_TERM,
     CLEAR_USER_JOB_FILTER_SELECTIONS
   }
 })

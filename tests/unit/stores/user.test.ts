@@ -71,6 +71,14 @@ describe('actions', () => {
     })
   })
 
+  describe('UPDATE_SKILLS_SEARCH_TERM', () => {
+    it('receives search term for skills the user has enterd', () => {
+      const userStore = useUserStore()
+      userStore.UPDATE_SKILLS_SEARCH_TERM('Vue Developer')
+      expect(userStore.skillsSearchTerm).toEqual('Vue Developer')
+    })
+  })
+
   describe('CLEAR_USER_JOB_FILTER_SELECTIONS', () => {
     it('removes all job filters that user has shosen', () => {
       const userStore = useUserStore()
