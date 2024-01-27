@@ -3,6 +3,9 @@
     <section class="pb-5">
       <job-filters-sidebar-prompt />
 
+      <collapsible-accordion header="Skills & Qualifications">
+        <job-filters-sidebar-skills />
+      </collapsible-accordion>
       <collapsible-accordion header="Degree">
         <job-filters-sidebar-degrees />
       </collapsible-accordion>
@@ -22,6 +25,7 @@
 import { defineAsyncComponent } from 'vue'
 import JobFiltersSidebarPrompt from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarPrompt.vue'
 import CollapsibleAccordion from '@/components/Shared/CollapsibleAccordion.vue'
+const JobFiltersSidebarSkills = defineAsyncComponent(() => import('./JobFiltersSidebarSkills.vue'))
 const JobFiltersSidebarDegrees = defineAsyncComponent(
   () => import('@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarDegrees.vue')
 )
