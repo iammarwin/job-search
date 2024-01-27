@@ -50,14 +50,14 @@ export const useJobsStore = defineStore('jobs', {
     [INCLUDE_JOB_BY_SKILL]: () => (job: Job) => {
       const userStore = useUserStore()
       if (userStore.skillsSearchTerm.length === 0) return true
-      return job.title.toLocaleLowerCase().includes(userStore.skillsSearchTerm.toLocaleLowerCase())
+      return job.title.toLowerCase().includes(userStore.skillsSearchTerm.toLowerCase())
     },
     [FILTERED_JOBS](state): Job[] {
       return state.jobs
         .filter((job) => this.INCLUDE_JOB_BY_ORGANIZATION(job))
         .filter((job) => this.INCLUDE_JOB_BY_JOB_TYPE(job))
         .filter((job) => this.INCLUDE_JOB_BY_DEGREE(job))
-        .filter((job) => this.INCLUDE_JOB_BY_DEGREE(job))
+        .filter((job) => this.INCLUDE_JOB_BY_SKILL(job))
     }
   },
   actions: {

@@ -1,8 +1,7 @@
 <template>
   <div class="rounded border border-gray-500 px-2 py-3">
     <text-input
-      v-model="skills"
-      :value="skills"
+      v-model="skillsSerachTerm"
       class="w-full text-base placeholder:text-sm"
       placeholder="Computer programming, Finance degree, etc."
     />
@@ -10,7 +9,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed } from 'vue'
 import TextInput from '@/components/Shared/TextInput.vue'
-const skills = ref('')
+import { useUserStore } from '@/stores/user'
+
+const userStore = useUserStore()
+const skillsSerachTerm = computed({
+  get() {
+    return userStore.skillsSearchTerm
+  },
+  set(value: string) {
+    userStore.UPDATE_SKILLS_SEARCH_TERM(value)
+  }
+})
 </script>
