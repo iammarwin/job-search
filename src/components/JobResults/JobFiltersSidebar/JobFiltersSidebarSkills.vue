@@ -1,11 +1,9 @@
 <template>
-  <div class="rounded border border-gray-500 px-2 py-3">
-    <text-input
-      v-model="skillsSerachTerm"
-      class="w-full text-base placeholder:text-sm"
-      placeholder="Computer programming, Finance degree, etc."
-    />
-  </div>
+  <text-input
+    v-model.trim.lazy="skillsSerachTerm"
+    class="w-full rounded border border-gray-500 px-2 py-3 text-base placeholder:text-sm focus:border-2 focus:border-brand-blue-1"
+    placeholder="Computer programming, Finance degree, etc."
+  />
 </template>
 
 <script setup lang="ts">
