@@ -50,7 +50,7 @@ export const useJobsStore = defineStore('jobs', {
     [INCLUDE_JOB_BY_SKILL]: () => (job: Job) => {
       const userStore = useUserStore()
       if (userStore.skillsSearchTerm.length === 0) return true
-      return job.title.includes(userStore.skillsSearchTerm)
+      return job.title.toLocaleLowerCase().includes(userStore.skillsSearchTerm.toLocaleLowerCase())
     },
     [FILTERED_JOBS](state): Job[] {
       return state.jobs
