@@ -1,22 +1,16 @@
 <template>
   <div class="fixed flex h-screen w-96 flex-col border-r border-brand-gray-1 bg-white p-4">
     <section class="pb-5">
-      <div class="flex flex-row items-center justify-between">
-        <h3 class="my-4 text-base font-semibold">What do you want do do?</h3>
-        <div class="flex items-center text-sm">
-          <action-button
-            btn-text="Clear Filters"
-            btn-type="tertiary"
-            @click="userStore.CLEAR_USER_JOB_FILTER_SELECTIONS"
-          />
-        </div>
-      </div>
+      <job-filters-sidebar-prompt />
+
       <collapsible-accordion header="Degree">
         <job-filters-sidebar-degrees />
       </collapsible-accordion>
+
       <collapsible-accordion header="Job Types">
         <job-filters-sidebar-job-types />
       </collapsible-accordion>
+
       <collapsible-accordion header="Organizations">
         <job-filters-sidebar-organizations />
       </collapsible-accordion>
@@ -26,7 +20,7 @@
 
 <script lang="ts" setup>
 import { defineAsyncComponent } from 'vue'
-import ActionButton from '@/components/Shared/ActionButton.vue'
+import JobFiltersSidebarPrompt from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarPrompt.vue'
 import CollapsibleAccordion from '@/components/Shared/CollapsibleAccordion.vue'
 const JobFiltersSidebarDegrees = defineAsyncComponent(
   () => import('@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarDegrees.vue')
@@ -38,7 +32,4 @@ const JobFiltersSidebarJobTypes = defineAsyncComponent(
 const JobFiltersSidebarOrganizations = defineAsyncComponent(
   () => import('@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarOrganizations.vue')
 )
-
-import { useUserStore } from '@/stores/user'
-const userStore = useUserStore()
 </script>
