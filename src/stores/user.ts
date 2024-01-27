@@ -18,6 +18,7 @@ export const useUserStore = defineStore('user', () => {
   const selectedOrganizations = ref<string[]>([])
   const selectedJobTypes = ref<string[]>([])
   const selectedDegrees = ref<string[]>([])
+  const skillsSearchTerm = ref<string>('')
 
   const LOGIN_USER = () => {
     isLoggedIn.value = true
@@ -42,6 +43,7 @@ export const useUserStore = defineStore('user', () => {
     selectedOrganizations,
     selectedJobTypes,
     selectedDegrees,
+    skillsSearchTerm,
     LOGIN_USER,
     ADD_SELECTED_ORGANIZATIONS,
     ADD_SELECTED_JOB_TYPES,
