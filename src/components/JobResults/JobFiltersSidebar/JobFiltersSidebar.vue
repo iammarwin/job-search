@@ -24,7 +24,9 @@
 </template>
 
 <script lang="ts" setup>
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+
 import JobFiltersSidebarPrompt from '@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarPrompt.vue'
 import CollapsibleAccordion from '@/components/Shared/CollapsibleAccordion.vue'
 const JobFiltersSidebarSkills = defineAsyncComponent(() => import('./JobFiltersSidebarSkills.vue'))
@@ -38,4 +40,14 @@ const JobFiltersSidebarJobTypes = defineAsyncComponent(
 const JobFiltersSidebarOrganizations = defineAsyncComponent(
   () => import('@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarOrganizations.vue')
 )
+import { useUserStore } from '@/stores/user'
+
+const route = useRoute()
+const userStore = useUserStore()
+
+const parseSkillsSerachTerm = () => {
+  const role = (route.query.role as string) || ''
+  userStore.UPDATE_SKILLS_SEARCH_TERM(role)
+}
+onMounted(parseSkillsSerachTerm)
 </script>
