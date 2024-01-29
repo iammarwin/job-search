@@ -1,7 +1,7 @@
 <template>
   <text-input
     v-model.trim.lazy="skillsSerachTerm"
-    class="w-full rounded border border-gray-500 px-2 py-3 text-base placeholder:text-sm focus:border-2 focus:border-brand-blue-1"
+    class="w-full rounded border border-gray-500 px-2 py-3 text-base focus:border-2 focus:border-brand-blue-1"
     placeholder="Computer programming, Finance degree, etc."
   />
 </template>
