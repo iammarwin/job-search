@@ -1,5 +1,7 @@
 <template>
-  <div class="fixed flex h-screen w-96 flex-col border-r border-brand-gray-1 bg-white p-4">
+  <div
+    class="fixed flex h-screen w-96 flex-col overflow-auto border-r border-brand-gray-1 bg-white p-4"
+  >
     <section class="pb-5">
       <job-filters-sidebar-prompt />
 
