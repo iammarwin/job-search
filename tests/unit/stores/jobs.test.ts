@@ -187,4 +187,41 @@ describe('getters', () => {
       })
     })
   })
+
+  describe('INCLUDE_JOB_BY_LOCATION', () => {
+    it("identifies if job matches user's location", () => {
+      const userStore = useUserStore()
+      userStore.locationSearchTerm = 'Londond UK'
+      const jobsStore = useJobsStore()
+      const job = createJob({ locations: ['Londond UK'] })
+
+      const result = jobsStore.INCLUDE_JOB_BY_LOCATION(job)
+
+      expect(result).toBe(true)
+    })
+
+    it('handles inconsistent character casing', () => {
+      const userStore = useUserStore()
+      userStore.locationSearchTerm = 'londond uK'
+      const jobsStore = useJobsStore()
+      const job = createJob({ locations: ['Londond UK'] })
+
+      const result = jobsStore.INCLUDE_JOB_BY_LOCATION(job)
+
+      expect(result).toBe(true)
+    })
+
+    describe('when the user has not eneterd any location', () => {
+      it('includes job', () => {
+        const userStore = useUserStore()
+        userStore.locationSearchTerm = ''
+        const jobsStore = useJobsStore()
+        const job = createJob({ locations: ['Londond UK'] })
+
+        const result = jobsStore.INCLUDE_JOB_BY_LOCATION(job)
+
+        expect(result).toBe(true)
+      })
+    })
+  })
 })

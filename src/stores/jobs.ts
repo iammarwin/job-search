@@ -13,6 +13,7 @@ export const INCLUDE_JOB_BY_ORGANIZATION = 'INCLUDE_JOB_BY_ORGANIZATION'
 export const INCLUDE_JOB_BY_JOB_TYPE = 'INCLUDE_JOB_BY_JOB_TYPE'
 export const INCLUDE_JOB_BY_DEGREE = 'INCLUDE_JOB_BY_DEGREE'
 export const INCLUDE_JOB_BY_SKILL = 'INCLUDE_JOB_BY_SKILL'
+export const INCLUDE_JOB_BY_LOCATION = 'INCLUDE_JOB_BY_LOCATION'
 
 export interface JobState {
   jobs: Job[]
@@ -52,12 +53,19 @@ export const useJobsStore = defineStore('jobs', {
       if (userStore.skillsSearchTerm.length === 0) return true
       return job.title.toLowerCase().includes(userStore.skillsSearchTerm.toLowerCase())
     },
+    [INCLUDE_JOB_BY_LOCATION]: () => (job: Job) => {
+      const userStore = useUserStore()
+      if (userStore.locationSearchTerm.length === 0) return true
+      const locations = job.locations.map((job) => job.toLowerCase())
+      return locations.includes(userStore.locationSearchTerm.toLowerCase())
+    },
     [FILTERED_JOBS](state): Job[] {
       return state.jobs
         .filter((job) => this.INCLUDE_JOB_BY_ORGANIZATION(job))
         .filter((job) => this.INCLUDE_JOB_BY_JOB_TYPE(job))
         .filter((job) => this.INCLUDE_JOB_BY_DEGREE(job))
         .filter((job) => this.INCLUDE_JOB_BY_SKILL(job))
+        .filter((job) => this.INCLUDE_JOB_BY_LOCATION(job))
     }
   },
   actions: {
