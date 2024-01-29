@@ -28,9 +28,14 @@ describe('state', () => {
     expect(userStore.selectedDegrees).toEqual([])
   })
 
-  it("stores user's searcj term for skills and qualifications", () => {
+  it("stores user's search term for skills and qualifications", () => {
     const userStore = useUserStore()
     expect(userStore.skillsSearchTerm).toEqual('')
+  })
+
+  it("stores user's search term for location", () => {
+    const userStore = useUserStore()
+    expect(userStore.locationSearchTerm).toEqual('')
   })
 })
 
@@ -76,6 +81,14 @@ describe('actions', () => {
       const userStore = useUserStore()
       userStore.UPDATE_SKILLS_SEARCH_TERM('Vue Developer')
       expect(userStore.skillsSearchTerm).toEqual('Vue Developer')
+    })
+  })
+
+  describe('UPDATE_LOCATION_SEARCH_TERM', () => {
+    it('receives search term for location the user has enterd', () => {
+      const userStore = useUserStore()
+      userStore.UPDATE_LOCATION_SEARCH_TERM('London UK')
+      expect(userStore.locationSearchTerm).toEqual('London UK')
     })
   })
 
