@@ -61,5 +61,11 @@ const parseSkillsSerachTerm = () => {
   const role = (route.query.role as string) || ''
   userStore.UPDATE_SKILLS_SEARCH_TERM(role)
 }
+
+const parseLocationSerachTerm = () => {
+  const location = (route.query.location as string) || ''
+  userStore.UPDATE_LOCATION_SEARCH_TERM(location)
+}
 onMounted(parseSkillsSerachTerm)
+onMounted(parseLocationSerachTerm)
 </script>

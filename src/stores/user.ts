@@ -45,6 +45,7 @@ export const useUserStore = defineStore('user', () => {
     selectedJobTypes.value = []
     selectedDegrees.value = []
     skillsSearchTerm.value = ''
+    locationSearchTerm.value = ''
   }
   return {
     isLoggedIn,

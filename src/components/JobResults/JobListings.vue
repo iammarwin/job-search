@@ -1,5 +1,5 @@
 <template>
-  <main class="ml-96 flex-auto bg-brand-gray-2 p-8">
+  <main v-if="displayedJobs.length > 0" class="ml-96 flex-auto bg-brand-gray-2 p-8">
     <div class="m-auto max-w-[1200px]">
       <ul class="flex flex-col gap-7">
         <job-listing v-for="job in displayedJobs" :key="job.id" :job="job" />
@@ -26,6 +26,11 @@
         </div>
       </div>
     </div>
+  </main>
+  <main v-else class="flex h-[92vh] w-full items-center justify-center">
+    <p class="text-center text-lg lg:ml-96">
+      Oops! It seems we couldn't find any results matching your search or filter criteria.
+    </p>
   </main>
 </template>
 
